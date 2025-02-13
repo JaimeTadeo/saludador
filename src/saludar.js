@@ -1,13 +1,23 @@
 function saludar() {
     const nombre = prompt("¿Cuál es tu nombre?");
-    const ahora = new Date(); // Obtiene la hora actual
+    const ahora = new Date();
     const hora = ahora.getHours();
-    const minutos = ahora.getMinutes().toString().padStart(2, "0"); // Asegura dos dígitos
+    const minutos = ahora.getMinutes().toString().padStart(2, "0");
+  
+    let saludoTiempo;
+  
+    if (hora >= 5 && hora < 12) {
+      saludoTiempo = "Buenos días";
+    } else if (hora >= 12 && hora < 18) {
+      saludoTiempo = "Buenas tardes";
+    } else {
+      saludoTiempo = "Buenas noches";
+    }
   
     if (nombre) {
-      alert(`Hola, ${nombre}! Son las ${hora}:${minutos}.`);
+      alert(`${saludoTiempo}, ${nombre}! Son las ${hora}:${minutos}.`);
     } else {
-      alert(`Hola! Son las ${hora}:${minutos}.`);
+      alert(`${saludoTiempo}! Son las ${hora}:${minutos}.`);
     }
   }
   
