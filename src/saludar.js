@@ -1,5 +1,16 @@
 function saludar() {
     const nombre = prompt("¿Cuál es tu nombre?");
+    if (!nombre) {
+      alert("Debes ingresar un nombre para continuar.");
+      return;
+    }
+  
+    let genero = prompt("¿Cuál es tu género? (Femenino/Masculino)").toLowerCase();
+    if (genero !== "femenino" && genero !== "masculino") {
+      alert("Genero no valido. Se usara un saludo neutro.");
+      genero = "Helicoptero apache";
+    }
+  
     const ahora = new Date();
     const hora = ahora.getHours();
     const minutos = ahora.getMinutes().toString().padStart(2, "0");
@@ -14,11 +25,11 @@ function saludar() {
       saludoTiempo = "Buenas noches";
     }
   
-    if (nombre) {
-      alert(`${saludoTiempo}, ${nombre}! Son las ${hora}:${minutos}.`);
-    } else {
-      alert(`${saludoTiempo}! Son las ${hora}:${minutos}.`);
+    if (genero === "femenino") {
+      saludoTiempo = saludoTiempo.replace("os", "as"); // Cambia "Buenos" por "Buenas"
     }
+  
+    alert(`${saludoTiempo}, ${nombre}! Son las ${hora}:${minutos}.`);
   }
   
   export default saludar;
