@@ -7,8 +7,13 @@ function saludar() {
   
     let genero = prompt("¿Cuál es tu género? (Femenino/Masculino)").toLowerCase();
     if (genero !== "femenino" && genero !== "masculino") {
-      alert("Genero no valido. Se usara un saludo neutro.");
-      genero = "Helicoptero apache";
+      alert("Género no válido. Se usará un saludo neutral.");
+      genero = "neutral";
+    }
+  
+    const edad = parseInt(prompt("¿Cuál es tu edad?"));
+    if (isNaN(edad) || edad <= 0) {
+      alert("Edad no válida. Se omitirá el tratamiento formal.");
     }
   
     const ahora = new Date();
@@ -26,10 +31,21 @@ function saludar() {
     }
   
     if (genero === "femenino") {
-      saludoTiempo = saludoTiempo.replace("os", "as"); // Cambia "Buenos" por "Buenas"
+      saludoTiempo = saludoTiempo.replace("os", "as"); 
     }
   
-    alert(`${saludoTiempo}, ${nombre}! Son las ${hora}:${minutos}.`);
+    let tratamiento = "";
+    if (edad > 30) {
+      if (genero === "masculino") {
+        tratamiento = "Sr. ";
+      } else if (genero === "femenino") {
+        tratamiento = "Sra. ";
+      } else {
+        tratamiento = "Cosa ";
+      }
+    }
+  
+    alert(`${saludoTiempo}, ${tratamiento}${nombre}! Son las ${hora}:${minutos}.`);
   }
   
   export default saludar;
